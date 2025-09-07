@@ -99,14 +99,17 @@ for _func in ['func_1', 'func_2']:
         # get samples from original function
         x_samples = np.sort(np.random.uniform(intv_left, intv_right, size=sample_size))
         y_samples = given.func(x_samples)
+        # print("\n| "+str(sample_size)+" |", end='')
         for _method in Method:
+            # _name = '_result/'+_func+'_'+_method+'_sample'+str(sample_size)
+            # print(" <img src="+_name+".png width=\"200\" height=\"200\" />"+" |", end="")
             print('======', _func, sample_size, _method, '======')
             # form the interpolate function
             interpolate = Interpolate(x_samples, y_samples)
             intl_func = interpolate.method(_method)
 
             # get the points for plt
-            x_plt = np.arange(intv_left, intv_right, 0.01)
+            x_plt = np.arange(intv_left, intv_right, 0.005)
             x_plt = np.sort(np.append(x_plt, x_samples))
             y_plt_intl = intl_func(x_plt)
             y_plt_func = given.func(x_plt)
@@ -115,11 +118,11 @@ for _func in ['func_1', 'func_2']:
             plt.clf()
             plt.plot(x_samples, y_samples, 'o', color='r', label='sampling')
             plt.plot(x_plt, y_plt_intl, '-', color='g', label='fitting polynomial')
-            plt.plot(x_plt, y_plt_func, '-', color='b', label='original function')
+            # plt.plot(x_plt, y_plt_func, '-', color='b', label='original function')
             plt.title(_method+'_sample'+str(sample_size))
             ax = plt.gca()
             ax.set_xlim(intv_left, intv_right)
-            ax.set_ylim([-1.5, 1.5])
+            ax.set_ylim([-0.5, 1.5])
             plt.legend()
             plt.savefig('_result/'+_func+'_'+_method+'_sample'+str(sample_size), dpi=96)
             # plt.show()
