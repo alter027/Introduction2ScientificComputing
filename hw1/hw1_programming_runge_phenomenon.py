@@ -92,37 +92,35 @@ class Interpolate:
     def barycentric(self):
         return lambda _x: barycentric_interpolate(self.x, self.y, _x)
  
-sample_size = 10000
-given = Given("func_2")
-intv_left, intv_right = given.interval()
+for _func in ['func_1', 'func_2']:
+    given = Given(_func)
+    intv_left, intv_right = given.interval()
+    for sample_size in SampleSize:
+        # get samples from original function
+        x_samples = np.sort(np.random.uniform(intv_left, intv_right, size=sample_size))
+        y_samples = given.func(x_samples)
+        for _method in Method:
+            print('======', _func, sample_size, _method, '======')
+            # form the interpolate function
+            interpolate = Interpolate(x_samples, y_samples)
+            intl_func = interpolate.method(_method)
 
-# get samples from original function
-x_samples = np.sort(np.random.uniform(intv_left, intv_right, size=sample_size))
-y_samples = given.func(x_samples)
-print(x_samples, y_samples)
+            # get the points for plt
+            x_plt = np.arange(intv_left, intv_right, 0.01)
+            x_plt = np.sort(np.append(x_plt, x_samples))
+            y_plt_intl = intl_func(x_plt)
+            y_plt_func = given.func(x_plt)
 
-# for _method in Method:
-for _method in ['newton']:
-    # form the interpolate function
-    interpolate = Interpolate(x_samples, y_samples)
-    intl_func = interpolate.method(_method)
-
-    # get the points for plt
-    x_plt = np.arange(intv_left, intv_right, 0.01)
-    x_plt = np.sort(np.append(x_plt, x_samples))
-    y_plt_intl = intl_func(x_plt)
-    y_plt_func = given.func(x_plt)
-
-    # plt
-    plt.clf()
-    plt.plot(x_samples, y_samples, 'o', color='r', label='sampling')
-    plt.plot(x_plt, y_plt_intl, '-', color='g', label='fitting polynomial')
-    plt.plot(x_plt, y_plt_func, '-', color='b', label='original function')
-    plt.title(_method+'_sample'+str(sample_size))
-    ax = plt.gca()
-    ax.set_xlim(intv_left, intv_right)
-    ax.set_ylim([-1.5, 1.5])
-    plt.legend()
-    plt.savefig(_method+'_sample'+str(sample_size))
-    # plt.show()
+            # plt
+            plt.clf()
+            plt.plot(x_samples, y_samples, 'o', color='r', label='sampling')
+            plt.plot(x_plt, y_plt_intl, '-', color='g', label='fitting polynomial')
+            plt.plot(x_plt, y_plt_func, '-', color='b', label='original function')
+            plt.title(_method+'_sample'+str(sample_size))
+            ax = plt.gca()
+            ax.set_xlim(intv_left, intv_right)
+            ax.set_ylim([-1.5, 1.5])
+            plt.legend()
+            plt.savefig('_result/'+_func+'_'+_method+'_sample'+str(sample_size), dpi=96)
+            # plt.show()
 
