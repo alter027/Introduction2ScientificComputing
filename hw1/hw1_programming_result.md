@@ -1,5 +1,5 @@
 # func_1 $\frac{1}{1+x^2}$
-| sample \ method | vandermonde | newton | lagrange | lagrange_modified | barycentric |
+| sample \ method |    vandermonde    |      newton       |     lagrange      | lagrange_modified |    barycentric    |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | 10 | <img src=_result/func_1_vandermonde_sample10.png width="200" height="200" /> | <img src=_result/func_1_newton_sample10.png width="200" height="200" /> | <img src=_result/func_1_lagrange_sample10.png width="200" height="200" /> | <img src=_result/func_1_lagrange_modified_sample10.png width="200" height="200" /> | <img src=_result/func_1_barycentric_sample10.png width="200" height="200" /> |
 | 30 | <img src=_result/func_1_vandermonde_sample30.png width="200" height="200" /> | <img src=_result/func_1_newton_sample30.png width="200" height="200" /> | <img src=_result/func_1_lagrange_sample30.png width="200" height="200" /> | <img src=_result/func_1_lagrange_modified_sample30.png width="200" height="200" /> | <img src=_result/func_1_barycentric_sample30.png width="200" height="200" /> |
