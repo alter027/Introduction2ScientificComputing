@@ -97,7 +97,7 @@ for _func in ['func_1', 'func_2']:
     intv_left, intv_right = given.interval()
     for sample_size in SampleSize:
         # get samples from original function
-        x_samples = np.sort(np.random.uniform(intv_left, intv_right, size=sample_size))
+        x_samples = np.linspace(intv_left, intv_right, sample_size)
         y_samples = given.func(x_samples)
         # print("\n| "+str(sample_size)+" |", end='')
         for _method in Method:
