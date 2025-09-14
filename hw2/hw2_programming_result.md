@@ -1,4 +1,4 @@
-# runge function $\frac{1}{1+25x^2}, x \in (-1, 1)$
+# runge function $\frac{1}{1+25x^2} , x \in (-1, 1)$
 
 picked 10000 equally spaced nodes and get the maximum error like,
 
