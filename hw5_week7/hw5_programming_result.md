@@ -31,4 +31,4 @@ For $h = 2$, it could convergent or divergent with different y0 settings (conver
 
 #### Explanation
 It is a nonlinear ODE, with equilibrium points at $y^{\ast} = 0$ (unstable) and $y^{\ast} = 1$ (stable).
-So consider $y^{\ast} = 1$, and get $ \lambda = y^{\ast} \implies \lambda = -1$ , so it requires $|1-\lambda h|<1 \implies 0 < h < 2$ for stability near the point.
+So consider $y^{\ast} = 1$, and get $\lambda =f'(y^{\ast})=-1$ , so it requires $|1-\lambda h|<1 \implies 0 < h < 2$ for stability near the point.
