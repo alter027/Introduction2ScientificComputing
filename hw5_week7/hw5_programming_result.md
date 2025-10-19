@@ -9,7 +9,7 @@
 
 #### Explanation
 From [lecture note](https://hackmd.io/@teshenglin/SCMA30009_05#The-absolute-stability), we know for the form $y'=\lambda y$, where $y(0)=1$
-- for forward euler method, for $h < \frac{-2Real(\lambda)}{|\lambda|}$ it is absolute stable, therefore, $h < 0.4$ in this case
+- for forward euler method, for $h < \frac{-2Real(\lambda)}{|\lambda|}$ it is absolute stable, that is, $h < 0.4$ in this case
     - For $h = 0.4$, it brings $u_n = (1+\lambda h)u_0 = (-1)^n$, therefore, the value jump between 1 and -1.
 - for backward euler method, it is unconditionally stable as $\lambda = -5$ is a real number.
 
