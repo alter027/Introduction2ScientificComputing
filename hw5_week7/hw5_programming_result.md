@@ -8,7 +8,7 @@
 | backward_euler | <img src="_result/diff_y=-5y_backward_euler_10.png" width="200"/> | <img src="_result/diff_y=-5y_backward_euler_40.png" width="200"/> | <img src="_result/diff_y=-5y_backward_euler_41.png" width="200"/> |
 
 #### Explanation
-From lecture [note](https://hackmd.io/@teshenglin/SCMA30009_05#The-absolute-stability), we know for the form $y'=\lambda y$, where $y(0)=1$
+From [lecture note](https://hackmd.io/@teshenglin/SCMA30009_05#The-absolute-stability), we know for the form $y'=\lambda y$, where $y(0)=1$
 - for forward euler method, for $h < \frac{-2Real(\lambda)}{|\lambda|}$ it is absolute stable, therefore, $h < 0.4$ in this case
     - For $h = 0.4$, it brings $u_n = (1+\lambda h)u_0 = (-1)^n$, therefore, the value jump between 1 and -1.
 - for backward euler method, it is unconditionally stable as $\lambda = -5$ is a real number.
@@ -27,8 +27,8 @@ The programming result matches the analysis.
 
 #### Result and Observation
 For $h \in (0, 2)$, it brings qualitatively correct.
-For $h = 2$, it could convergent or divergent with different y0 settings (convergent when $y_0=0.5$ and divergent when $y_0=0.4, 0.9$ in my setup). Moreover, if $y0*h = 1$, which means the $y_1$ will touch the convergence value right after the first step, and it will stay on it forever.
+For $h = 2$, it could convergent or divergent with different y0 settings (convergent when $y_0=0.5$ and divergent when $y_0=0.4, 0.9$ in my setup). Moreover, if $y_0*h = 1$, which means the $y_1$ will touch the convergence value right after the first step, and it will stay on it forever.
 
 #### Explanation
-It is a nonlinear ODE, with equilibrium points at $y^{*} = 0$ (unstable) and $y^{*} = 1$ (stable).
-So consider $y^{*} = 1$, and get $\lambda = y^{*} = -1$, so it requires $|1-\lambda h|<1 \implies 0 < h < 2$ for stability near the point.
+It is a nonlinear ODE, with equilibrium points at $y^{\ast} = 0$ (unstable) and $y^{\ast} = 1$ (stable).
+So consider $y^{\ast} = 1$, and get $ \lambda = y^{\ast} = -1$, so it requires $|1-\lambda h|<1 \implies 0 < h < 2$ for stability near the point.
