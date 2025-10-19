@@ -63,9 +63,9 @@ for step in (0.1, 0.4, 0.41):
 
 # problem 2
 _func = 'diff_y=y-y^2'
-for y0 in (0.4, 0.5, 0.9):
+for y0 in (0.9,):
     plt.clf()
-    for step in (0.4, 1.2, 1.9, 2, 2.1):
+    for step in (1.2,):
         _method = 'forward_euler'
         numerical = Numerical(f2DE, f2Solved, 0, 100, y0)
         _t, _u, _y = numerical.method(_method, step)
@@ -78,4 +78,4 @@ for y0 in (0.4, 0.5, 0.9):
     plt.title(_func+'_'+_method+'_y0='+str(y0)+'_h='+str(step))
     plt.legend()
     plt.savefig('_result/'+_func+'_'+_method+'_y0='+str(y0)+'_'+str(int(step*100))+'.png')
-    # plt.show()
+    plt.show()
