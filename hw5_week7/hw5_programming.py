@@ -9,8 +9,10 @@ import matplotlib.pyplot as plt
 # 2 numerical method: forward_euler, backward_euler
 # stability
 
-f1DE = lambda t, y: -5*y
-f1Solved = lambda t, y0: np.exp(-5*t)
+f1aDE = lambda t, y: -5*y
+f1aSolved = lambda t, y0: np.exp(-5*t)
+f1bDE = lambda t, y: 5*y
+f1bSolved = lambda t, y0: np.exp(5*t)
 f2DE = lambda t, y: y*(1-y)
 f2Solved = lambda t, y0: np.exp(t) / (np.exp(t)+((1-y0)/y0))
 
@@ -43,13 +45,12 @@ class Numerical:
         # An alternative, direction calculate the function since f is linear
         return t, u, self.fSolved(t, self.y0)
 
-# problem 1
+# problem 1a
 _func = 'diff_y=-5y'
 for step in (0.1, 0.4, 0.41):
     for _method in ('forward_euler', 'backward_euler'):
-        numerical = Numerical(f1DE, f1Solved, 0, 10, 1)
+        numerical = Numerical(f1aDE, f1aSolved, 0, 10, 1)
         _t, _u, _y = numerical.method(_method, step)
-
         # plt
         plt.clf()
         plt.plot(_t, _u, '-', color='r', label=_method)
@@ -61,6 +62,25 @@ for step in (0.1, 0.4, 0.41):
         plt.savefig('_result/'+_func+'_'+_method+'_'+str(int(step*100))+'.png')
         # plt.show()
 
+# problem 1b
+_func = 'diff_y=5y'
+for step in (0.1, 0.4, 0.41):
+    for _method in ('backward_euler',):
+        numerical = Numerical(f1bDE, f1bSolved, 0, 10, 1)
+        _t, _u, _y = numerical.method(_method, step)
+        print(_t, _u, _y, f1bSolved(_t, 1))
+        # plt
+        plt.clf()
+        plt.plot(_t, _u, '-', color='r', label=_method)
+        plt.plot(_t, _y, '-', color='g', label='exact')
+        plt.xlabel("t")
+        plt.ylabel("y")
+        plt.ylim(0, 1e21)
+        plt.legend()
+        plt.title(_func+'_'+_method+'_h='+str(step))
+        plt.savefig('_result/'+_func+'_'+_method+'_'+str(int(step*100))+'.png')
+        plt.show()
+
 # problem 2
 _func = 'diff_y=y-y^2'
 for y0 in (0.9,):
@@ -69,7 +89,6 @@ for y0 in (0.9,):
         _method = 'forward_euler'
         numerical = Numerical(f2DE, f2Solved, 0, 100, y0)
         _t, _u, _y = numerical.method(_method, step)
-
         # plt
         plt.plot(_t, _u, '-', label='h='+str(step))
     plt.plot(_t, _y, '-', color='r', label='exact')
@@ -78,4 +97,4 @@ for y0 in (0.9,):
     plt.title(_func+'_'+_method+'_y0='+str(y0)+'_h='+str(step))
     plt.legend()
     plt.savefig('_result/'+_func+'_'+_method+'_y0='+str(y0)+'_'+str(int(step*100))+'.png')
-    plt.show()
+    # plt.show()

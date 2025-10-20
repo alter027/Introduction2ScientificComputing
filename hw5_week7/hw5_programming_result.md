@@ -1,19 +1,30 @@
 ### Problem 1
 <img src=_result/p1.png width="400" />
 
-#### Result
+#### Result for 1a
 |  | h=0.1 | h=0.4 | 0.41 |
 | ---- | ---- | ---- | ---- |
 | forward_euler | <img src="_result/diff_y=-5y_forward_euler_10.png" width="200"/> | <img src="_result/diff_y=-5y_forward_euler_40.png" width="200"/> | <img src="_result/diff_y=-5y_forward_euler_41.png" width="200"/> |
-| backward_euler | <img src="_result/diff_y=-5y_backward_euler_10.png" width="200"/> | <img src="_result/diff_y=-5y_backward_euler_40.png" width="200"/> | <img src="_result/diff_y=-5y_backward_euler_41.png" width="200"/> |
 
-#### Explanation
+#### Explanation for 1a
 From [lecture note](https://hackmd.io/@teshenglin/SCMA30009_05#The-absolute-stability), we know for the form $y'=\lambda y$, where $y(0)=1$
 - for forward euler method, for $h < \frac{-2Real(\lambda)}{|\lambda|}$ it is absolute stable, that is, $h < 0.4$ in this case
     - For $h = 0.4$, it brings $u_n = (1+\lambda h)u_0 = (-1)^n$, therefore, the value jump between 1 and -1.
-- for backward euler method, it is unconditionally stable as $\lambda = -5$ is a real number.
 
 The programming result matches the analysis.
+
+#### Result for 1b
+|  | h=0.1 | h=0.4 | 0.41 |
+| ---- | ---- | ---- | ---- |
+| backward_euler | <img src="_result/diff_y=5y_backward_euler_10.png" width="200"/> | <img src="_result/diff_y=5y_backward_euler_40.png" width="200"/> | <img src="_result/diff_y=5y_backward_euler_41.png" width="200"/> |
+
+#### Explanation for 1b
+For the form, with backward euler method, which can be expressed as $u_{n}=\left(\frac{1}{1-h\lambda}\right)^n$. Then,
+- for $h=0.1$, it gives $u_{n}=\left(\frac{1}{0.9}\right)^n$
+- for $h=0.4$, it gives $u_{n}=\left(\frac{1}{-1}\right)^n$
+- for $h=0.41$, it gives $u_{n}=\left(\frac{1}{-1.05}\right)^n$
+
+None of them convergent in this case.
 
 ### Problem 2
 <img src=_result/p2.png width="400" />
