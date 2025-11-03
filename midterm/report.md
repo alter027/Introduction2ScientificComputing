@@ -45,7 +45,7 @@ A^{(m)} =
 \begin{pmatrix}
 \displaystyle\frac{F^{(m)}_{1} - f^{*}_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^{*}_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^{*}_m}{Z^{(m)}_{1} - z_m} \\
 \vdots & \ddots &  & \vdots \\
-\displaystyle\frac{F^{(m)}_{M-m} - f^{*}_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^{*}_m}{Z^{(m)}_{M-m} - z_m}
+\displaystyle\frac{F^{(m)}_{M-m} - f^{*}_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^{*}_m}{Z^{(m)}_{M-m} - z_m} \\
 \end{pmatrix}
 $$
 
