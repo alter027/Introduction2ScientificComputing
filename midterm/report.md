@@ -43,13 +43,13 @@ In the beginning, $Z$ is an empty set. Choose an arbitrary point (?) and add it 
 $$
 A^{(m)} = 
 \begin{pmatrix}
-\displaystyle\frac{F^{(m)}_{1} - f^*_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^*_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^*_m}{Z^{(m)}_{1} - z_m} \\
+\displaystyle\frac{F^{(m)}_{1} - f^{*}_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^{*}_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^{*}_m}{Z^{(m)}_{1} - z_m} \\
 \vdots & \ddots &  & \vdots \\
-\displaystyle\frac{F^{(m)}_{M-m} - f^*_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^*_m}{Z^{(m)}_{M-m} - z_m}
+\displaystyle\frac{F^{(m)}_{M-m} - f^{*}_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^{*}_m}{Z^{(m)}_{M-m} - z_m}
 \end{pmatrix}
 $$
 
-where $m$ is size of $S$, $F^{(m)}=\{f_k\}$ where $k \in Z_m'$, and $f^* ={f_j}$ where $j \in Z_m$. In the first iteration, $m=1$, then we know that shape of $A^{(1)}$ is $(M-1, 1)$
+where $m$ is size of $S$, $F^{(m)}=\{f_k\}$ where $k \in Z_m'$, and $f^{*} ={f_j}$ where $j \in Z_m$. In the first iteration, $m=1$, then we know that shape of $A^{(1)}$ is $(M-1, 1)$
 Then, seek for $w$ where
 
 $$
