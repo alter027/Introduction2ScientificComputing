@@ -16,6 +16,7 @@ $$\frac{
 }{
     \left(1 - \frac{x}{2} + \frac{x^2}{12}\right) \left(1 - \frac{x}{5}\right) \left(1 + \frac{x}{5}\right)
 }$$
+
 Then, poles appear at $5$ and $-5$, where zero appears near $5.1$ and $-5.1$, then we would find pole at $5$ is too close to zero at $5.1$, which behave far from the original function.
 In comparison, following would be a better approximation since there isn't real closed poles and zeros.
 
@@ -44,7 +45,8 @@ $$A^{(m)} =
 \displaystyle\frac{F^{(m)}_{1} - f^*_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^*_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^*_m}{Z^{(m)}_{1} - z_m} \\
 \vdots & \ddots &  & \vdots \\
 \displaystyle\frac{F^{(m)}_{M-m} - f^*_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^*_m}{Z^{(m)}_{M-m} - z_m}
-\end{pmatrix}$$
+\end{pmatrix}
+$$
 
 where $m$ is size of $S$, $F^{(m)}=\{f_k\}$ where $k \in Z_m'$, and $f^* ={f_j}$ where $j \in Z_m$. In the first iteration, $m=1$, then we know that shape of $A^{(1)}$ is $(M-1, 1)$
 Then, seek for $w$ where
@@ -54,7 +56,9 @@ $$
 $$
 
 by using SVD.
-After $w$ is solved, compute $$r^m(z) = \frac{n(z)}{d(z)} = 
+After $w$ is solved, compute 
+
+$$r^m(z) = \frac{n(z)}{d(z)} = 
 \frac{
     \displaystyle \sum_{j=1}^{m} \frac{w_j f_j}{z - z_j}
 }{
