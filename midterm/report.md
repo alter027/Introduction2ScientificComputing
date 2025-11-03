@@ -67,7 +67,8 @@ $$r^m(z) = \frac{n(z)}{d(z)} =
 }
 $$
 
- and find the new supporting point $z_i$ from $Zm'$ by choosing
+and find the new supporting point $z_i$ from $Zm'$ by choosing
+
 $$
 arg\, max \,|\, r^m(z_i)-f(z_i) \,|
 $$
