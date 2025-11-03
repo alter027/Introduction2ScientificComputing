@@ -10,12 +10,15 @@ It often results from numerical issues or overfitting, which can lead to mislead
 
 #### An Example
 Consider $e^x$. A bad approximation of it would be
+
 $$\frac{
     \left(1 + \frac{x}{2} + \frac{x^2}{12}\right) \left(1 - \frac{x}{5.1}\right) \left(1 + \frac{x}{5.1}\right)
 }{
     \left(1 - \frac{x}{2} + \frac{x^2}{12}\right) \left(1 - \frac{x}{5}\right) \left(1 + \frac{x}{5}\right)
-}$$Then, poles appear at $5$ and $-5$, where zero appears near $5.1$ and $-5.1$, then we would find pole at $5$ is too close to zero at $5.1$, which behave far from the original function.
+}$$
+Then, poles appear at $5$ and $-5$, where zero appears near $5.1$ and $-5.1$, then we would find pole at $5$ is too close to zero at $5.1$, which behave far from the original function.
 In comparison, following would be a better approximation since there isn't real closed poles and zeros.
+
 $$\frac{1 + \frac{x}{2} + \frac{x^2}{12}}{1 - \frac{x}{2} + \frac{x^2}{12}}
 $$
 
@@ -29,32 +32,42 @@ $$r(z) = \frac{n(z)}{d(z)} =
     \displaystyle \sum_{j=1}^{m} \frac{w_j}{z - z_j}
 }
 $$
+
 where $m \geq 1$ is an integer, $z_1, ... , z_m$ are a set of real of complext distinct support points, $f_1, ... , f_m$ are a set of real of complext data values, $w_1, ... , w_m$ are a set of real of complext weights.
 
 #### Greedy Algorithm
 Given a set of $z_1, ... , z_M$ and corresponding $f_1, ... , f_M$ for $\Omega = \{1, 2, ..., M\}$, $M$ is the size of the set. The keypoint of the algorithm is to find a set $Z  \subset \Omega$ and $Z' = \Omega\setminus S$.
 In the beginning, $Z$ is an empty set. Choose an arbitrary point (?) and add it into $Z$ (Let's call it $Z_1$ now), then try to solve following Loewner matrix:
+
 $$A^{(m)} = 
 \begin{pmatrix}
 \displaystyle\frac{F^{(m)}_{1} - f^*_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^*_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^*_m}{Z^{(m)}_{1} - z_m} \\
 \vdots & \ddots &  & \vdots \\
 \displaystyle\frac{F^{(m)}_{M-m} - f^*_1}{Z^{(m)}_{M-m} - z_1} & \cdots &  & \displaystyle\frac{F^{(m)}_{M-m} - f^*_m}{Z^{(m)}_{M-m} - z_m}
 \end{pmatrix}$$
+
 where $m$ is size of $S$, $F^{(m)}=\{f_k\}$ where $k \in Z_m'$, and $f^* ={f_j}$ where $j \in Z_m$. In the first iteration, $m=1$, then we know that shape of $A^{(1)}$ is $(M-1, 1)$
 Then, seek for $w$ where
+
 $$
 \text{minimize} \; \|A^{(m)} w \|_{M-m}, \quad \|w\|_m = 1,
-$$ by using SVD.
+$$
+
+by using SVD.
 After $w$ is solved, compute $$r^m(z) = \frac{n(z)}{d(z)} = 
 \frac{
     \displaystyle \sum_{j=1}^{m} \frac{w_j f_j}{z - z_j}
 }{
     \displaystyle \sum_{j=1}^{m} \frac{w_j}{z - z_j}
 }
-$$ and find the new supporting point $z_i$ from $Zm'$ by choosing
+$$
+
+ and find the new supporting point $z_i$ from $Zm'$ by choosing
 $$
 arg\, max \,|\, r^m(z_i)-f(z_i) \,|
-$$ Then let $Z_{m+1}=Z_m \cup \{z_i\}$ and start the next iteration until all $|\, r^m(z_i)-f(z_i) \,|$ are less than the expected criterion.
+$$
+
+ Then let $Z_{m+1}=Z_m \cup \{z_i\}$ and start the next iteration until all $|\, r^m(z_i)-f(z_i) \,|$ are less than the expected criterion.
 ### More Details
 - Assume that $Z_m$ has at least $m$ points, i.e., $m \leq M/2$. It is to make the solution of $\|A^{(m)} w \|_{M-m}$ make sense.
 - In the paper, it mentions the above method is usually good enough. However, if the numerical Froissart doublets still happen, for instance, they set the convergence tolerance to 0 and take the maximal step to sufficiently large. Their method is to identify spurious poles by setting residues < $10^{-13}$, remove the nearest point from the supporting point, and do SVD again.
