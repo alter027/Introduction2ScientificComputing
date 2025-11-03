@@ -130,9 +130,9 @@ Consider $cos(10x)$ in $[\, -1, 1\,]$
 
 - value of m
     - Using Chebyshev points
-    <img src=_result/chebyshev_cos.png width="400"/>
+    - <img src=_result/chebyshev_cos.png width="400"/>
     - Using uniformly distribution
-    <img src=_result/uniform_cos.png width="400"/>
+    - <img src=_result/uniform_cos.png width="400"/>
 
 
 
@@ -144,9 +144,9 @@ Consider $cos(10x)$ in $[\, -1, 1\,]$
 
 - value of m
     - Chevyshev
-    <img src=_result/chebyshev_fig.png width="400"/>
+    - <img src=_result/chebyshev_fig.png width="400"/>
     - uniformly
-    <img src=_result/uniform_fig.png width="400"/>
+    - <img src=_result/uniform_fig.png width="400"/>
 
 #### Observation
 - Barycentric seems to explode on uniform data, while Cubic Spline is hard to converge.
