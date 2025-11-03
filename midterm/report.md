@@ -40,7 +40,8 @@ where $m \geq 1$ is an integer, $z_1, ... , z_m$ are a set of real of complext d
 Given a set of $z_1, ... , z_M$ and corresponding $f_1, ... , f_M$ for $\Omega = \{1, 2, ..., M\}$, $M$ is the size of the set. The keypoint of the algorithm is to find a set $Z  \subset \Omega$ and $Z' = \Omega\setminus S$.
 In the beginning, $Z$ is an empty set. Choose an arbitrary point (?) and add it into $Z$ (Let's call it $Z_1$ now), then try to solve following Loewner matrix:
 
-$$A^{(m)} = 
+$$
+A^{(m)} = 
 \begin{pmatrix}
 \displaystyle\frac{F^{(m)}_{1} - f^*_1}{Z^{(m)}_{1} - z_1} & \displaystyle\frac{F^{(m)}_{1} - f^*_2}{Z^{(m)}_{1} - z_2} & \cdots & \displaystyle\frac{F^{(m)}_{1} - f^*_m}{Z^{(m)}_{1} - z_m} \\
 \vdots & \ddots &  & \vdots \\
