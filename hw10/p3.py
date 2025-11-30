@@ -66,9 +66,11 @@ def solve_mol_exact_fst(N, T):
 
 def plot_solutions(sols):
     fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-    titles = ['Backward Euler + FST', 'Forward Euler + FST', 'Method of Lines + FST']
+    titles = ['Backward Euler (Finite Diff + FST)', 
+              'Forward Euler (Finite Diff + FST)', 
+              'Method of Lines (exact time + FST)']
     labels = ['Part a', 'Part b', 'Part c']
-    blue_labels = ['Backward Euler (FST)', 'Forward Euler (FST)', 'MOL exact time (FST)']
+    blue_labels = ['Backward Euler', 'Forward Euler', 'MOL exact time']
     
     for ax, title, lbl, blue_lbl in zip(axes, titles, labels, blue_labels):
         for name, (x, u) in sols.items():
@@ -78,7 +80,7 @@ def plot_solutions(sols):
                 ax.plot(x, u, '--', lw=2, label='Exact solution', color='orange')
         ax.set_xlabel('x')
         ax.set_ylabel('u(x, T)')
-        ax.set_title(title, fontweight='bold')
+        ax.set_title(title, fontweight='bold', fontsize=11)
         ax.grid(True, alpha=0.3)
         ax.legend()
     plt.tight_layout()
@@ -106,7 +108,7 @@ if __name__ == "__main__":
     plot_solutions(sols)
     
     # Convergence analysis
-    print("\nCONVERGENCE ANALYSIS")
+    print("\nCONVERGENCE ANALYSIS (L2 Error vs Reference N=800)")
     print("-"*60)
     
     x_ref, u_ref = solve_mol_exact_fst(800, T)
@@ -121,7 +123,9 @@ if __name__ == "__main__":
             x, u = func(N_val)
             if not np.any(np.isnan(u)):
                 u_int = np.interp(x, x_ref, u_ref)
-                errs.append(np.sqrt(np.sum((u - u_int)**2) * (x[1]-x[0])))
+                # L2 error: sqrt(sum((u - u_ref)^2) * dx)
+                l2_err = np.sqrt(np.sum((u - u_int)**2) * (x[1]-x[0]))
+                errs.append(l2_err)
         results[name] = errs
     
     print(f"{'N':<6} | {'MOL':<12} | {'BE':<12} | {'FE':<12}")
@@ -136,9 +140,16 @@ if __name__ == "__main__":
         print(row)
     
     print("-"*54)
-    for name, errs in results.items():
+    for name in ['MOL', 'BE', 'FE']:
+        errs = results[name]
         if len(errs) >= 2:
-            order = np.log(errs[-2]/errs[-1]) / np.log(2)
-            print(f"{name} Convergence Order: {order:.2f}")
+            # Compute average convergence order using all consecutive pairs
+            orders = []
+            for i in range(len(errs)-1):
+                if errs[i] > 0 and errs[i+1] > 0:
+                    order = np.log(errs[i]/errs[i+1]) / np.log(2)
+                    orders.append(order)
+            avg_order = np.mean(orders) if orders else 0
+            print(f"{name} Convergence Order: {avg_order:.2f}")
     
     print("\n" + "="*60)
