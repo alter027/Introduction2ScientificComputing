@@ -107,11 +107,11 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Analysis
 ### Impossibility Theorem
 - The impossibility theorem states that exponential accuracy in approximating analytic functions from equispaced samples is only possible if the algorithm also exhibits exponential instability.
-- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $\left\Vert{f-r_n}\right\Vert= exp(-C\sqrt{n}$, where C > 0 is a constant.
+- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $\left\Vert{f-r_n}\right\Vert= exp(-C\sqrt{n}$, where $C > 0$ is a constant.
 - AAA circumvents this fundamental limitation through its use of adaptive oversampling and its nonlinear nature, which allows it to adjust the degree independently of the number of sample points.
 
 ### Why AAA Wins
-1. **Exploits analytic structure**: AAA can identify and capture poles in meromorphic functions like tanh(5x), as well as efficiently approximate functions with branch point singularities like √(1.21-x²).
+1. **Exploits analytic structure**: AAA can identify and capture poles in meromorphic functions like tanh(5x), as well as efficiently approximate functions with branch point singularities like $\sqrt{1.21-x^2}$.
 2. **Adaptive degree selection**: Unlike methods that use a degree tied to n, AAA adaptively selects a degree much lower than n/2, often finding that very low-degree rational functions suffice when analytic structure is present.
 3. **Numerical interpolation philosophy**: By matching the data to a tolerance of 10⁻¹³ rather than interpolating exactly, AAA gains robustness against the exponential instabilities that plague exact high-degree polynomial interpolation.
 4. **Barycentric form stability**: The use of barycentric representation for rational functions provides excellent numerical stability, avoiding many of the conditioning issues that arise with other representations.
