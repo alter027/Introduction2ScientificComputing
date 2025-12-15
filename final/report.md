@@ -107,7 +107,7 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Analysis
 ### Impossibility Theorem
 - The impossibility theorem states that exponential accuracy in approximating analytic functions from equispaced samples is only possible if the algorithm also exhibits exponential instability.
-- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $||f-r_n||= exp(-C\sqrt{n}$, where C > 0 is a constant.
+- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $\left\Vert{f-r_n}\right\Vert= exp(-C\sqrt{n}$, where C > 0 is a constant.
 - AAA circumvents this fundamental limitation through its use of adaptive oversampling and its nonlinear nature, which allows it to adjust the degree independently of the number of sample points.
 
 ### Why AAA Wins
