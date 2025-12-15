@@ -116,6 +116,17 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 3. **Numerical interpolation philosophy**: By matching the data to a tolerance of 10⁻¹³ rather than interpolating exactly, AAA gains robustness against the exponential instabilities that plague exact high-degree polynomial interpolation.
 4. **Barycentric form stability**: The use of barycentric representation for rational functions provides excellent numerical stability, avoiding many of the conditioning issues that arise with other representations.
 
+### Poles
+- Sometimes such poles appear, often with very small residues; these are called spurious poles or Froissart doublets and they usually do not help the approximation.
+- The original AAA paper suggested a “cleanup” step to handle these poles, but the authors now say they are not confident that this old cleanup is very useful.
+- Instead, they propose **AAA–least squares (AAA‑LS)**: if there are any bad poles, those poles are discarded, while the remaining poles are kept and used as a fixed denominator structure. Using the remaining poles, they set up a linear least‑squares problem (in partial‑fraction form) to compute a new rational approximation.
+    - In Costa, S., Trefethen, L.N.: AAA-least squares rational approximation and solution of Laplace problems. Proceedings 8ECM, to appear
+
+### Convergence
+- For small n: AAA often produces bad poles and therefore falls back to a least‑squares fit that is OK but not better than other methods; for large n: Once f is well resolved, AAA exploits its rational/analytic structure and then converges very rapidly, often outperforming other methods.
+- However, AAA does not keep improving forever; once it reaches its target relative accuracy (about $10^{−13}$), further increasing n no longer reduces the error.
+- The paper also mentioned an experiment that increase the precision of float, to decreasing rounding error. In the case, when precision is **increased to 77‑digit BitFloat**, AAA keeps converging smoothly to extremely small errors, while the polynomial least‑squares and Fourier extension methods still hit instability limits and do not improve as much.
+
 ## Result of the implementation from my side
 Implemented by Python [here](https://github.com/alter027/Introduction2ScientificComputing/tree/main/final), the trend is consistent with the results of the paper.
 |Function|Result|
