@@ -77,8 +77,8 @@ _sample_method = 'equal_space'
 # _sample_method = 'chebyshev'
 
 name_map = {FA:"FA", FB:"FB", FC:"FC", FD:"FD", FE:"FE"}
-# for f in [FA, FB, FC, FD, FE]:
-for f in [FC, FD, FE]:
+for f in [FA, FB, FC, FD, FE]:
+# for f in [FC, FD, FE]:
     _e = []
     for _m in Method:
         _e.append(sample_interpolate(_sample_method, _m, _range, f))
