@@ -95,7 +95,7 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Implementation in the paper
 
 ### Comparison betweem Methods
-| Method | $\sqrt(1.21-x^2)$ | $\sqrt(0.01+x²)$ | $tanh(5x)$ | $sin(40x)$ | $exp(-1/x^2)$ |
+| Method | $\sqrt{1.21-x^2}$ | $\sqrt{0.01+x²}$ | $tanh(5x)$ | $sin(40x)$ | $exp(-1/x^2)$ |
 |--------|-----------|-----------|----------|----------|------------|
 | Cubic Splines | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) |
 | Poly LS | Good→Unstable | Poor→Unstable | Good→Unstable | Good→Unstable | Poor→Unstable |
@@ -120,8 +120,8 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 Implemented by Python [here](https://github.com/alter027/Introduction2ScientificComputing/tree/main/final), the trend is consistent with the results of the paper.
 |Function|Result|
 |---|---|
-|$\sqrt(1.21-x^2)$|<img src=_result/equal_space_all_FA.jpg width="400"/>|
-|$\sqrt(0.01+x^2)$|<img src=_result/equal_space_all_FB.jpg width="400"/>|
+|$\sqrt{1.21-x^2}$|<img src=_result/equal_space_all_FA.jpg width="400"/>|
+|$\sqrt{0.01+x^2}$|<img src=_result/equal_space_all_FB.jpg width="400"/>|
 |$tanh(5x)$|<img src=_result/equal_space_all_FC.jpg width="400"/>|
 |$sin(40x)$|<img src=_result/equal_space_all_FD.jpg width="400"/>|
 |$exp(-1/x^2)$|<img src=_result/equal_space_all_FE.jpg width="400"/>|
