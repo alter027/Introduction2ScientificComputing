@@ -28,7 +28,7 @@ The theorem's core principle: you can have exponential accuracy with exponential
     - **Convergence**: O(n⁻⁴) algebraic rate
     - **Stability**: Rock-solid stable
     - **Characteristics**: 
-      - Piecewise polynomials with C² continuity
+      - Piecewise polynomials with $C^2$ continuity
       - No Gibbs oscillations at boundaries
       - Slowest convergence but most predictable
       - Never unstable, never suffers from Runge phenomenon
@@ -76,9 +76,9 @@ The theorem's core principle: you can have exponential accuracy with exponential
       - Nonlinear rational approximation
       - Exploits analytic structure (poles, branch points)
       - Numerical interpolant ($\leq 10^{-13}$ error on grid)
-      - Can produce unwanted poles in $[-1,1]$ for real functions
+      - Can produce unwanted poles in [-1,1] for real functions
       - Best for functions with hidden analytic structure
-      - Degree typically << n/2 due to adaptive oversampling
+      - Degree typically $<< n/2$ due to adaptive oversampling
 
 ### Complexity
 | Method | Construction | Evaluation (single point) | Evaluation (m points) | Storage |
@@ -107,7 +107,7 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Analysis
 ### Impossibility Theorem
 - The impossibility theorem states that exponential accuracy in approximating analytic functions from equispaced samples is only possible if the algorithm also exhibits exponential instability.
-- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $||f-rₙ|| = exp(-C\sqrt(n)$, where C > 0 is a constant.
+- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $||f-r_n||= exp(-C\sqrt{n}$, where C > 0 is a constant.
 - AAA circumvents this fundamental limitation through its use of adaptive oversampling and its nonlinear nature, which allows it to adjust the degree independently of the number of sample points.
 
 ### Why AAA Wins
