@@ -75,8 +75,8 @@ The theorem's core principle: you can have exponential accuracy with exponential
     - **Characteristics**:
       - Nonlinear rational approximation
       - Exploits analytic structure (poles, branch points)
-      - Numerical interpolant (≤10⁻¹³ error on grid)
-      - Can produce unwanted poles in [-1,1] for real functions
+      - Numerical interpolant ($\leq 10^{-13}$ error on grid)
+      - Can produce unwanted poles in $[-1,1]$ for real functions
       - Best for functions with hidden analytic structure
       - Degree typically << n/2 due to adaptive oversampling
 
@@ -95,7 +95,7 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Implementation in the paper
 
 ### Comparison betweem Methods
-| Method | √(1.21-x²) | √(0.01+x²) | tanh(5x) | sin(40x) | exp(-1/x²) |
+| Method | $\sqrt(1.21-x^2)$ | $\sqrt(0.01+x²)$ | $tanh(5x)$ | $sin(40x)$ | $exp(-1/x^2)$ |
 |--------|-----------|-----------|----------|----------|------------|
 | Cubic Splines | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) | O(n⁻⁴) |
 | Poly LS | Good→Unstable | Poor→Unstable | Good→Unstable | Good→Unstable | Poor→Unstable |
@@ -107,7 +107,7 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 ## Analysis
 ### Impossibility Theorem
 - The impossibility theorem states that exponential accuracy in approximating analytic functions from equispaced samples is only possible if the algorithm also exhibits exponential instability.
-- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $||f-rₙ|| = exp(-C√n)$, where C > 0 is a constant.
+- Conversely, any stable algorithm can achieve at best root-exponential convergence with the form $||f-rₙ|| = exp(-C\sqrt(n)$, where C > 0 is a constant.
 - AAA circumvents this fundamental limitation through its use of adaptive oversampling and its nonlinear nature, which allows it to adjust the degree independently of the number of sample points.
 
 ### Why AAA Wins
@@ -120,11 +120,11 @@ where: n = number of sample points, d = degree of approximant, m = number of eva
 Implemented by Python [here](https://github.com/alter027/Introduction2ScientificComputing/tree/main/final), the trend is consistent with the results of the paper.
 |Function|Result|
 |---|---|
-|√(1.21-x²)|<img src=_result/equal_space_all_FA.jpg width="400"/>|
-|√(0.01+x²)|<img src=_result/equal_space_all_FB.jpg width="400"/>|
-|tanh(5x)|<img src=_result/equal_space_all_FC.jpg width="400"/>|
-|sin(40x)|<img src=_result/equal_space_all_FD.jpg width="400"/>|
-|exp(-1/x²)|<img src=_result/equal_space_all_FE.jpg width="400"/>|
+|$\sqrt(1.21-x^2)$|<img src=_result/equal_space_all_FA.jpg width="400"/>|
+|$\sqrt(0.01+x^2)$|<img src=_result/equal_space_all_FB.jpg width="400"/>|
+|$tanh(5x)$|<img src=_result/equal_space_all_FC.jpg width="400"/>|
+|$sin(40x)$|<img src=_result/equal_space_all_FD.jpg width="400"/>|
+|$exp(-1/x^2)$|<img src=_result/equal_space_all_FE.jpg width="400"/>|
 
 ## Conclusion
 AAA algorithm achieves near-exponential convergence on equispaced data by adaptively selecting support points in a greedy, nonlinear rational approximation process that exploits analytic structures like poles and branch points, often converging twice as fast as linear methods. It maintains stability through barycentric representation and a numerical interpolation tolerance (e.g., 10^{-13}), avoiding high-degree exact interpolation that triggers exponential instability as dictated by the impossibility theorem.
